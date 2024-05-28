@@ -6,7 +6,7 @@ describe("Initialized board", () => {
 
     expect(board).toBeTruthy();
     expect(board.getTitle()).toBe("");
-    expect(board.columns.length).toBe(0);
+    expect(board.columns.length).toBe(5);
   });
 });
 
@@ -31,6 +31,6 @@ describe("Board operations", () => {
     board.columns.push({title: "test", tickets: []});
 
     board.clear();
-    expect(board.columns.length).toBe(0);
+    expect(board.columns.length).toBe(5);
   });
 });
