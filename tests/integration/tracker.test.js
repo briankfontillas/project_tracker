@@ -41,7 +41,7 @@ describe("Ticket usage operations", () => {
     const doneTickets = board.findColumn(Column.STATUS.done).tickets;
 
     board.addTicket(testTicket, Column.STATUS.done);
-    board.progressTicket(testTicket);
+    board.progressTicket(testTicket.title);
     expect(doneTickets.length).toBe(2);
   });
 });

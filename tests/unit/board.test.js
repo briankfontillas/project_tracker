@@ -6,7 +6,7 @@ describe("Initialized board", () => {
 
     expect(board).toBeTruthy();
     expect(board.getTitle()).toBe("");
-    expect(board.columns.length).toBe(5);
+    expect(board.columns.length).toBe(6);
   });
 });
 
