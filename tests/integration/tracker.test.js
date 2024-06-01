@@ -37,6 +37,16 @@ describe("Ticket usage operations", () => {
     expect(todoTickets.length).toBe(1);
   });
 
+  test("Move ticket to the left", () => {
+    const todoTickets = board.findColumn(Column.STATUS.inProgress).tickets;
+
+    board.addTicket(testTicket, Column.STATUS.inProgress);
+    expect(todoTickets.length).toBe(2);
+
+    board.regressTicket(testTicket.title);
+    expect(todoTickets.length).toBe(1);
+  });
+
   test("Cannot move ticket to the right if last column", () => {
     const doneTickets = board.findColumn(Column.STATUS.done).tickets;
 
@@ -44,4 +54,12 @@ describe("Ticket usage operations", () => {
     board.progressTicket(testTicket.title);
     expect(doneTickets.length).toBe(2);
   });
+
+  test("Cannot move ticket to the left if first column", () => {
+    const todoTickets = board.findColumn(Column.STATUS.todo).tickets;
+    
+    board.addTicket(testTicket);
+    board.regressTicket(testTicket.title);
+    expect(todoTickets.length).toBe(1);
+  })
 });
