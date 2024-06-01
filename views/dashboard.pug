@@ -1,6 +1,8 @@
 extends layout
 block main
   h1(id="project-title") Project title goes here
+  button(class="pg-btn" id="new-ticket") + Create ticket
+  button(id="clear-btn") Clear board
   table 
     thead
       tr#board-header
@@ -12,3 +14,21 @@ block main
         th(class="column") Testing
         th(class="column") Monitoring
         th(class="column") Done
+    tbody 
+      tr
+        div 
+          td(class="ticket")
+            a(href="/") Test ticket
+            button(class="move left" disabled) left
+            button(class="move right") right
+          td
+          td(class="ticket")
+            a(href="/") Test ticket
+            button(class="move left") left
+            button(class="move right") right
+          td 
+          td 
+          td(class="ticket done")
+            a(href="/") Test ticket
+            button(class="move left") left
+            button(class="move right" disabled) right
