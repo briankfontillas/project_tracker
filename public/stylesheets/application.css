@@ -22,8 +22,13 @@ thead {
   border-bottom: 1px solid black;
 }
 
+tbody {
+  border: 1px solid black;
+}
+
 a {
   text-decoration: none;
+  font-weight: bold;
 }
 
 .column {
@@ -31,7 +36,6 @@ a {
   padding: 0;
   margin: 0;
   width: 16%;
-
 }
 
 #project-title {
@@ -44,10 +48,15 @@ a {
 
 .ticket {
   box-sizing: border-box;
+  background-color: whitesmoke;
   border-radius: 3px;
-  border: 1px solid black;
+  border: 1px solid #cecece;
   height: 100px;
   font-size: smaller;
+}
+
+.move {
+  border: 1px solid #cecece;
 }
 
 .left {
@@ -66,6 +75,20 @@ a {
   float: right;
 }
 
-.done {
-  text-decoration: line-through;
+ul {
+  box-sizing: border-box;
+  height: 100px;
+}
+
+td {
+  background-color: rgba(207, 209, 209, .5);
+  max-height: 750px;
+}
+
+li {
+  box-sizing: border-box;
+  padding-top: 40px;
+  height: 50px;
+  width: 100%;
+  border-radius: 5px;
 }

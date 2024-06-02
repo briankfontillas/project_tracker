@@ -6,7 +6,7 @@ block main
   table 
     thead
       tr#board-header
-        th(colspan=6) Main header
+        th(colspan=6) My Dashboard
       tr#maincolumn-header
         th(class="column") To-do
         th(class="column") In-progress
@@ -14,21 +14,13 @@ block main
         th(class="column") Testing
         th(class="column") Monitoring
         th(class="column") Done
-    tbody 
-      //- tr
-        //- div 
-        //-   td(class="ticket")
-        //-     a(href="/") Test ticket
-        //-     button(class="move left" disabled) left
-        //-     button(class="move right") right
-        //-   td
-        //-   td(class="ticket")
-        //-     a(href="/") Test ticket
-        //-     button(class="move left") left
-        //-     button(class="move right") right
-        //-   td 
-        //-   td 
-        //-   td(class="ticket done")
-        //-     a(href="/") Test ticket
-        //-     button(class="move left") left
-        //-     button(class="move right" disabled) right
+    tbody
+      each column in testBoard.columns
+        if column.tickets.length > 0
+          td
+            ul
+              each ticket in column.tickets
+                li(class="ticket")
+                  a(href="/")=ticket.title
+                  button(class="move left") L
+                  button(class="move right") R
