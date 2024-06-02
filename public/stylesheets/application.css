@@ -240,15 +240,15 @@ select[name="priority"] {
   color: whitesmoke;
 }
 
-.fade-in {
-  animation: fadeInAnimation 1s ease-in forwards;
-  opacity: 0;
-}
-
 .arrow {
   padding: 0;
   margin: 0;
   display: inline-block;
+}
+
+.fade-in {
+  animation: fadeInAnimation 1s ease-in forwards;
+  opacity: 0;
 }
 
 @keyframes fadeInAnimation {

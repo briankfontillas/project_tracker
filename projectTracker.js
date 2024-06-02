@@ -60,8 +60,13 @@ app.post("/ticket/create", (req, res) => {
 
 app.post("/progress", (req, res) => {
   let ticketTitle = req.body.ticketTitle;
-  // console.log("TITLE:", ticketTitle);
   testBoard.progressTicket(ticketTitle);
+  res.redirect("/dashboard");
+});
+
+app.post("/regress", (req, res) => {
+  let ticketTitle = req.body.ticketTitle;
+  testBoard.regressTicket(ticketTitle);
   res.redirect("/dashboard");
 });
 
