@@ -92,3 +92,111 @@ li {
   width: 100%;
   border-radius: 5px;
 }
+
+
+#title-start dd input{
+  width: 100%;
+  height: 40px;
+  padding: 5px 3px;
+  background-color: #f9f9f9;
+  border-style: none;
+  outline: none;
+  border-radius: 3px;
+  border-bottom: 3px solid black;
+  font-size: 34px;
+}
+
+#start-form {
+  margin-top: 25%;
+}
+
+.start-btn {
+  background-color: black;
+  color: whitesmoke;
+  margin-top: 40px;
+  padding: 4px 7px;
+  font-size: 20px;
+  float: right;
+  border-radius: 4px;
+  border: 1px solid #cecece;
+}
+
+.start-btn:hover {
+  background-color: #979797;
+}
+
+.submit {
+  position: absolute;
+  bottom: 50px;
+  right: 41%;
+}
+
+#logo {
+  width: 50px;
+  height: 40px;
+}
+
+#ticket-title-input {
+  display: inline-block;
+  width: 60%;
+  height: 40px;
+  padding: 5px 3px;
+  background-color: #f9f9f9;
+  border-style: none;
+  outline: none;
+  border-radius: 3px;
+  border-bottom: 3px solid black;
+  font-size: 34px;
+}
+
+select[name="status"] {
+  background-color: black;
+  color: whitesmoke;
+  margin-top: 40px;
+  padding: 4px 7px;
+  font-size: 20px;
+  position: absolute;
+  top: 50px;
+  right: 330px;
+  border-radius: 4px;
+  border: 1px solid #cecece;
+}
+
+textarea {
+  width: 60%;
+  height: 400px;
+  margin-top: 30px;
+  border-radius: 6px;
+  border: 1px solid rgba(227, 227, 227, .5);
+  resize: none;
+  outline: none;
+  background-color: whitesmoke;
+  font-size: 20px;
+}
+
+select[name="priority"] {
+  background-color: black;
+  color: whitesmoke;
+  margin-top: 40px;
+  padding: 4px 7px;
+  font-size: 20px;
+  position: absolute;
+  top: 50px;
+  right: 470px;
+  border-radius: 4px;
+  border: 1px solid #cecece;
+}
+
+.fade-in {
+  animation: fadeInAnimation 1s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

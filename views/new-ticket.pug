@@ -1,0 +1,29 @@
+extends layout
+block main
+  form(class="fade-in" action="/dashboard", method="post")
+    fieldset
+      dl
+        dt
+          label(for="ticket-title" id="ticket-title")
+        dd
+          input(type="text" name="ticket-title" id="ticket-title-input" placeholder="Enter ticket title here . . .")
+      label(for="status") 
+      select(name="status")
+        option(value="todo" default)=testBoard.columns[0].title
+        option(value="in-progress")=testBoard.columns[1].title
+        option(value="review")=testBoard.columns[2].title
+        option(value="testing")=testBoard.columns[3].title
+        option(value="monitoring")=testBoard.columns[4].title
+        option(value="done")=testBoard.columns[5].title
+      dl
+        dt
+          label(for="description") 
+        dd
+          textarea(name="description") 
+      label(for="priority")
+      select(name="priority")
+        option(default) 1
+        option 2
+        option 3
+        option 4
+      input(type="submit" value="Create ticket" class="start-btn submit")

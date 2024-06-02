@@ -1,9 +1,9 @@
 extends layout
 block main
-  h1(id="project-title") Project title goes here
+  h1(id="project-title")=testBoard.title
   button(class="pg-btn" id="new-ticket") + Create ticket
   button(id="clear-btn") Clear board
-  table 
+  table(class="fade-in")
     thead
       tr#board-header
         th(colspan=6) My Dashboard
