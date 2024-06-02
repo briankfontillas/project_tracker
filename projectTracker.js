@@ -17,10 +17,25 @@ app.use(express.static("public"));
 
 app.get("/", (req, res) => {
   console.log(testBoard.columns)
-  res.render("dashboard", {
-    testBoard,
-  });
+  if (testBoard.title) {
+    res.redirect("/dashboard");
+  } else {
+    res.redirect("/new-board");
+  }
 });
+
+app.get("/new-board", (req, res) => {
+  res.render("new-board");
+});
+
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard", { testBoard });
+});
+
+app.get("/new-ticket", (req, res) => {
+  console.log(testBoard.columns)
+  res.render("new-ticket", { testBoard });
+})
 
 app.listen(port, host, () => {
   console.log(`Project tracker listening on port ${port} of host ${host}`);
