@@ -19,7 +19,7 @@ block main
     tbody
       each column in testBoard.columns
         if column.tickets.length > 0
-          td
+          td(class="td-container")
             ul
               each ticket in column.tickets
                 li(class="ticket")
@@ -33,4 +33,4 @@ block main
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
                       button(class="move right")=">"
         else
-          td
+          td(class="td-container")
