@@ -40,6 +40,10 @@ app.get("/new-ticket", (req, res) => {
   });
 });
 
+app.get("/ticket", (req, res) => {
+  res.redirect("/new-ticket");
+});
+
 app.get("/ticket/:id", (req, res) => {
   let id = req.params.id;
   let ticket = testBoard.findTicketById(+id)
@@ -72,6 +76,8 @@ app.post("/ticket/:id/update", (req, res) => {
   ticket.updateDescription(req.body.description);
   ticket.updatePriority(req.body.priority);
   ticket.updateStatus(req.body.status);
+
+  testBoard.addTicket(testBoard.removeTicketByTitle(req.body.title)[0], req.body.status);
 
   res.redirect("/dashboard");
 });

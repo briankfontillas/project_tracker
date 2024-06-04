@@ -26,11 +26,11 @@ block main
                   a(href="/dashboard")
                     form(class="arrow" action="/regress", method="post") 
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
-                      button(class="move left")="<"
+                      button(class="move left" disabled=ticket.status === testBoard.columns[0].title)="<"
                   a(id="ticket-title" href=`/ticket/${ticket.id}`)=ticket.title
                   a(href="/dashboard")
                     form(class="arrow" action="/progress", method="post") 
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
-                      button(class="move right")=">"
+                      button(class="move right" disabled=ticket.status === testBoard.columns[5].title)=">"
         else
           td

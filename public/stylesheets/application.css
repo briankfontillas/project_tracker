@@ -64,6 +64,10 @@ a {
   cursor: pointer;
 }
 
+.move:disabled {
+  cursor: default;
+}
+
 .left {
   float: left;
 }
@@ -160,7 +164,7 @@ li {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 170px;
+  width: 75%;
 }
 
 #ticket-title-input {
