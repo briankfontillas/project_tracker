@@ -1,2 +1,31 @@
 extends layout
 block main
+  form(class="fade-in" action=`/ticket/${ticket.id}/update`, method="post")
+    fieldset
+      dl
+        dt
+          label(for="title" id="ticket-title")
+        dd
+          input(type="text" name="title" id="ticket-title-input" value=`${ticket.title}` required)
+      label(for="status") 
+      select(name="status")
+        option(value=`${statuses.todo}` selected=statuses.todo === ticket.status)=testBoard.columns[0].title
+        option(value=`${statuses.inProgress}` selected=statuses.inProgress === ticket.status)=testBoard.columns[1].title
+        option(value=`${statuses.review}` selected=statuses.review === ticket.status)=testBoard.columns[2].title
+        option(value=`${statuses.testing}` selected=statuses.testing === ticket.status)=testBoard.columns[3].title
+        option(value=`${statuses.monitoring}` selected=statuses.monitoring === ticket.status)=testBoard.columns[4].title
+        option(value=`${statuses.done}` selected=statuses.done === ticket.status)=testBoard.columns[5].title
+      dl
+        dt
+          label(for="description") Description:
+        dd
+          textarea(name="description")=`${ticket.description}` 
+      label(for="priority")
+      select(name="priority")
+        option(value="1" selected=ticket.priority === "1") 1
+        option(value="2" selected=ticket.priority === "2") 2
+        option(value="3" selected=ticket.priority === "3") 3
+        option(value="4" selected=ticket.priority === "4") 4
+      input(type="submit" value="Update ticket" class="submit")
+  a(href="/dashboard")
+    button(class="cancel-btn") X

@@ -1,11 +1,11 @@
 extends layout
 block main
-  h1(class="fade-in" id="project-title")=testBoard.title
+  h1(id="project-title")=testBoard.title
   a(href="/new-ticket")
     button(class="project-btn" id="new-ticket") + Create ticket
   form(action="/dashboard/clear", method="post") 
     button(id="clear-btn" name="tickets" value="clear") Clear board
-  table(class="fade-in")
+  table
     thead
       tr#board-header
         th(colspan=6) My Dashboard
@@ -16,10 +16,10 @@ block main
         th(class="column") Testing
         th(class="column") Monitoring
         th(class="column") Done
-    tbody
+    tbody.fade-in
       each column in testBoard.columns
         if column.tickets.length > 0
-          td(class="td-container")
+          td
             ul
               each ticket in column.tickets
                 li(class="ticket")
@@ -27,10 +27,10 @@ block main
                     form(class="arrow" action="/regress", method="post") 
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
                       button(class="move left")="<"
-                  a(id="ticket-title" href="/")=ticket.title
+                  a(id="ticket-title" href=`/ticket/${ticket.id}`)=ticket.title
                   a(href="/dashboard")
                     form(class="arrow" action="/progress", method="post") 
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
                       button(class="move right")=">"
         else
-          td(class="td-container")
+          td
