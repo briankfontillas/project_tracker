@@ -32,6 +32,10 @@ a {
   color: black;
 }
 
+button, select, input[type="submit"] {
+  cursor: pointer;
+}
+
 .column {
   box-sizing: border-box;
   padding: 0;
@@ -55,6 +59,7 @@ a {
   border: 1px solid #cecece;
   height: 100px;
   font-size: smaller;
+  position: relative;
 }
 
 .move {
@@ -80,10 +85,22 @@ a {
   float: right;
 }
 
+#new-ticket:hover {
+  background-color: #979797;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
 #clear-btn {
   position: absolute;
   top: 74px;
   right: 180px;
+}
+
+#clear-btn:hover {
+  background-color: #979797;
+  color: whitesmoke;
+  cursor: pointer;
 }
 
 ul {
@@ -264,8 +281,17 @@ select[name="priority"] {
   }
 }
 
-/* .td-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-} */
+.priority {
+  font-weight: bold;
+  background-color: rgba(207, 209, 209, .4);
+  position: absolute;
+  top: 86%;
+  right: 2px;
+  padding: 0;
+  border-top: 1px solid #cecece;
+  border-left: 1px solid #cecece;
+  border-bottom: .5px solid #cecece;
+  border-right: .5px solid #cecece;
+  
+  font-size: 9px;
+}

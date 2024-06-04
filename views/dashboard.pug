@@ -32,5 +32,6 @@ block main
                     form(class="arrow" action="/progress", method="post") 
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
                       button(class="move right" disabled=ticket.status === testBoard.columns[5].title)=">"
+                  p(class="priority")=`P${ticket.priority}`
         else
           td
