@@ -4,6 +4,7 @@ const testBoard = require("./lib/seed-data");
 const Board = require("./lib/board");
 const Column = require("./lib/column");
 const Ticket = require("./lib/ticket");
+const nextId = require("./lib/nextId");
 
 const app = express();
 const host = "localhost";
@@ -17,7 +18,6 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false}));
 
 app.get("/", (req, res) => {
-  console.log(testBoard.columns)
   if (testBoard.title) {
     res.redirect("/dashboard");
   } else {
@@ -30,7 +30,6 @@ app.get("/new-board", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
-  console.log("MY BOARD:", testBoard);
   res.render("dashboard", { testBoard });
 });
 
@@ -38,6 +37,21 @@ app.get("/new-ticket", (req, res) => {
   res.render("new-ticket", {
     testBoard,
     statuses: Column.STATUS,
+  });
+});
+
+app.get("/ticket", (req, res) => {
+  res.redirect("/new-ticket");
+});
+
+app.get("/ticket/:id", (req, res) => {
+  let id = req.params.id;
+  let ticket = testBoard.findTicketById(+id)
+
+  res.render("edit-ticket", {
+    testBoard,
+    statuses: Column.STATUS,
+    ticket,
   });
 });
 
@@ -52,9 +66,19 @@ app.post("/ticket/create", (req, res) => {
   let status = req.body.status;
   let priority = req.body.priority;
 
-  console.log(req.body);
-
   testBoard.addTicket(new Ticket(title, description, priority, status), status);
+  res.redirect("/dashboard");
+});
+
+app.post("/ticket/:id/update", (req, res) => {
+  let ticket = testBoard.findTicketById(+(req.params.id));
+  ticket.updateTitle(req.body.title);
+  ticket.updateDescription(req.body.description);
+  ticket.updatePriority(req.body.priority);
+  ticket.updateStatus(req.body.status);
+
+  testBoard.addTicket(testBoard.removeTicketByTitle(req.body.title)[0], req.body.status);
+
   res.redirect("/dashboard");
 });
 
