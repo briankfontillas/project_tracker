@@ -44,9 +44,6 @@ app.get("/ticket/:id", (req, res) => {
   let id = req.params.id;
   let ticket = testBoard.findTicketById(+id)
 
-  console.log("my ticket:", ticket);
-  console.log("statuses:", Column.STATUS);
-
   res.render("edit-ticket", {
     testBoard,
     statuses: Column.STATUS,
