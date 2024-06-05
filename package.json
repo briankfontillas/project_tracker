@@ -8,7 +8,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "npx nodemon projectTracker.js"
+    "start": "npx nodemon projectTracker.js",
+    "test": "npx jest /tests"
   },
   "author": "",
   "license": "ISC",

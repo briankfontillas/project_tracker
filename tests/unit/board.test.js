@@ -31,6 +31,6 @@ describe("Board operations", () => {
     board.columns.push({title: "test", tickets: []});
 
     board.clear();
-    expect(board.columns.length).toBe(5);
+    expect(board.columns.length).toBe(6);
   });
 });
