@@ -4,6 +4,12 @@ body {
   margin: 10px 20px;
 }
 
+header {
+  box-sizing: border-box;
+  border-radius: 3px;
+  border-bottom: 3px solid black;
+}
+
 main {
   margin: 20px 40px;
 }
@@ -97,7 +103,7 @@ button, select, input[type="submit"] {
 
 #clear-btn {
   position: absolute;
-  top: 74px;
+  top: 77px;
   right: 180px;
 }
 
@@ -109,7 +115,7 @@ button, select, input[type="submit"] {
 
 #sort-btn {
   position: absolute;
-  top: 74px;
+  top: 77px;
   right: 282px;
 }
 
