@@ -1,6 +1,8 @@
 extends layout
 block main
   h1(id="project-title")=testBoard.title
+  a(href="/dashboard/update")
+    img(id="title-update-btn" src="/images/edit-icon-15.png" alt="edit title")
   a(href="/new-ticket")
     button(class="project-btn" id="new-ticket") + Create ticket
   form(action="/dashboard/clear", method="post") 

@@ -1,0 +1,10 @@
+extends layout
+block main
+  form(id="start-form" action="/dashboard", method="post")
+    fieldset(id="start-set" class="fade-in")
+      dl(id="title-start")
+        dt 
+          label(for="project-title")
+        dd 
+          input(type="text" name="project-title" id="project-title" placeholder="Project title . . ." value=testBoard.title required)
+      input(type="submit" value="Update title" class="start-btn")

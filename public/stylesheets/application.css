@@ -109,6 +109,21 @@ button, select, input[type="submit"] {
   right: 282px;
 }
 
+#sort-btn:hover {
+  background-color: #979797;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+#title-update-btn {
+  width: 25px;
+  margin-left: 10px;
+}
+
+#title-update-btn {
+  filter: hue-rotate(180deg);
+}
+
 ul {
   box-sizing: border-box;
   height: 100px;
