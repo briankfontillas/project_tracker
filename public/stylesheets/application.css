@@ -73,6 +73,10 @@ button, select, input[type="submit"] {
   cursor: default;
 }
 
+.move:hover {
+  background-color: rgba(207, 209, 209, .4);
+}
+
 .left {
   float: left;
 }
@@ -313,6 +317,6 @@ select[name="priority"] {
   border-left: 1px solid #cecece;
   border-bottom: .5px solid #cecece;
   border-right: .5px solid #cecece;
-  
+  cursor: default;
   font-size: 9px;
 }
