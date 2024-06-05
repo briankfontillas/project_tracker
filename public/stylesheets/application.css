@@ -120,8 +120,8 @@ button, select, input[type="submit"] {
   margin-left: 10px;
 }
 
-#title-update-btn {
-  filter: hue-rotate(180deg);
+#title-update-btn:hover {
+  opacity: 0.5;
 }
 
 ul {

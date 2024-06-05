@@ -33,6 +33,10 @@ app.get("/dashboard", (req, res) => {
   res.render("dashboard", { testBoard });
 });
 
+app.get("/dashboard/update", (req, res) => {
+  res.render("board-title", { testBoard });
+});
+
 app.get("/new-ticket", (req, res) => {
   res.render("new-ticket", {
     testBoard,
@@ -53,6 +57,13 @@ app.get("/ticket/:id", (req, res) => {
     statuses: Column.STATUS,
     ticket,
   });
+});
+
+app.post("/dashboard/update", (req, res) => {
+  let newTitle = req.body.projectTitle;
+  testBoard.updateTitle(newTitle);
+
+  res.redirect("/dashboard");
 });
 
 app.post("/dashboard/sort", (req, res) => {
