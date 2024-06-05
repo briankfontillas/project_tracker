@@ -5,6 +5,8 @@ block main
     button(class="project-btn" id="new-ticket") + Create ticket
   form(action="/dashboard/clear", method="post") 
     button(id="clear-btn" name="tickets" value="clear") Clear board
+  form(action="/dashboard/sort", method="post")
+    button(id="sort-btn" name="tickets" value="sort") Sort by priority
   table
     thead
       tr#board-header

@@ -103,6 +103,12 @@ button, select, input[type="submit"] {
   cursor: pointer;
 }
 
+#sort-btn {
+  position: absolute;
+  top: 74px;
+  right: 282px;
+}
+
 ul {
   box-sizing: border-box;
   height: 100px;
@@ -153,7 +159,7 @@ li {
   background-color: #979797;
 }
 
-.project-btn, #clear-btn {
+.project-btn, #clear-btn, #sort-btn {
   background-color: black;
   color: whitesmoke;
   padding: 4px 7px;

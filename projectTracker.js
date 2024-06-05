@@ -55,6 +55,11 @@ app.get("/ticket/:id", (req, res) => {
   });
 });
 
+app.post("/dashboard/sort", (req, res) => {
+  testBoard.sortTicketsByPriority();
+  res.redirect("/dashboard");
+})
+
 app.post("/dashboard/clear", (req, res) => {
   testBoard.clear();
   res.redirect("/dashboard");
