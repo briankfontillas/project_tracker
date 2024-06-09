@@ -11,6 +11,16 @@ const app = express();
 const host = "localhost";
 const port = 3000;
 
+function validateTitle(title, whichTitle) {
+  return body(title)
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage(`${whichTitle} is required.`)
+    .bail()
+    .isLength({ max: 25 })
+    .withMessage(`${whichTitle} is too long. Maximum length is 25 characters. `)
+}
+
 app.set("views", "./views");
 app.set("view engine", "pug");
 
@@ -53,14 +63,31 @@ app.get("/ticket/:id", (req, res) => {
   let id = req.params.id;
   let ticket = testBoard.findTicketById(+id)
 
-  res.render("edit-ticket", {
-    testBoard,
-    statuses: Column.STATUS,
-    ticket,
-  });
+  if (!ticket) {
+    res.render("not-found");
+  } else {
+    res.render("edit-ticket", {
+      testBoard,
+      statuses: Column.STATUS,
+      ticket,
+    });
+  }
 });
 
-app.post("/dashboard/update", (req, res) => {
+app.post("/dashboard/update",
+  [validateTitle("projectTitle", "Project title")],
+  (req, res, next) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("board-title", {
+        testBoard: testBoard,
+        errorMessages: errors.array().map(error => error.msg),
+      });
+    } else {
+      next();
+    }
+  },
+  (req, res) => {
   let newTitle = req.body.projectTitle;
   testBoard.updateTitle(newTitle);
 
@@ -78,14 +105,7 @@ app.post("/dashboard/clear", (req, res) => {
 });
 
 app.post("/ticket/create",
-  [
-    body("title")
-      .trim()
-      .isLength({ min: 1 })
-      .bail()
-      .isLength({ max: 25 })
-      .withMessage("Title length needs to be between 1 - 25 characters."),
-  ],
+  [validateTitle("title", "Project title")],
   (req, res, next) => {
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -108,16 +128,32 @@ app.post("/ticket/create",
   res.redirect("/dashboard");
 });
 
-app.post("/ticket/:id/update", (req, res) => {
-  let ticket = testBoard.findTicketById(+(req.params.id));
-  ticket.updateTitle(req.body.title);
-  ticket.updateDescription(req.body.description);
-  ticket.updatePriority(req.body.priority);
-  ticket.updateStatus(req.body.status);
+app.post("/ticket/:id/update",
+  [validateTitle("title", "Ticket title")],
+  (req, res, next) => {
+    let ticket = testBoard.findTicketById(+(req.params.id));
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("edit-ticket", {
+        errorMessages: errors.array().map(error => error.msg),
+        testBoard: testBoard,
+        statuses: Column.STATUS,
+        ticket: ticket,
+      });
+    } else {
+      next();
+    }
+  },
+  (req, res) => {
+    let ticket = testBoard.findTicketById(+(req.params.id));
+    ticket.updateTitle(req.body.title);
+    ticket.updateDescription(req.body.description);
+    ticket.updatePriority(req.body.priority);
+    ticket.updateStatus(req.body.status);
 
-  testBoard.addTicket(testBoard.removeTicketByTitle(req.body.title)[0], req.body.status);
+    testBoard.addTicket(testBoard.removeTicketByTitle(req.body.title)[0], req.body.status);
 
-  res.redirect("/dashboard");
+    res.redirect("/dashboard");
 });
 
 app.post("/progress", (req, res) => {

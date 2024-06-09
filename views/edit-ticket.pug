@@ -6,7 +6,7 @@ block main
         dt
           label(for="title" id="ticket-title")
         dd
-          input(type="text" name="title" id="ticket-title-input" value=`${ticket.title}` required)
+          input(type="text" name="title" id="ticket-title-input" value=`${ticket.title}`)
       label(for="status") 
       select(name="status")
         option(value=`${statuses.todo}` selected=statuses.todo === ticket.status)=testBoard.columns[0].title

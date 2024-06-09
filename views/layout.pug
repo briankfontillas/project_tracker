@@ -13,3 +13,8 @@ html(lang="en-US")
       //- block logo
     main
       block main
+      if errorMessages
+        if errorMessages.length > 0
+          each message in errorMessages
+            div(class="fade-out toast")
+              p=message
