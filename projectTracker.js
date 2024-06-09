@@ -1,5 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
+const { body, validationResult } = require("express-validator");
 const testBoard = require("./lib/seed-data");
 const Board = require("./lib/board");
 const Column = require("./lib/column");
@@ -76,7 +77,28 @@ app.post("/dashboard/clear", (req, res) => {
   res.redirect("/dashboard");
 });
 
-app.post("/ticket/create", (req, res) => {
+app.post("/ticket/create",
+  [
+    body("title")
+      .trim()
+      .isLength({ min: 1 })
+      .bail()
+      .isLength({ max: 25 })
+      .withMessage("Title length needs to be between 1 - 25 characters."),
+  ],
+  (req, res, next) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render("new-ticket", {
+        errorMessages: errors.array().map(error => error.msg),
+        testBoard: testBoard,
+        statuses: Column.STATUS,
+      });
+    } else {
+      next();
+    }
+  },
+  (req, res) => {
   let title = req.body.title;
   let description = req.body.description;
   let status = req.body.status;
