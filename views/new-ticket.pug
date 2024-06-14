@@ -9,12 +9,12 @@ block main
           input(type="text" name="title" id="ticket-title-input" placeholder="Enter ticket title here . . .")
       label(for="status") 
       select(name="status")
-        option(value=`${statuses.todo}` default)=testBoard.columns[0].title
-        option(value=`${statuses.inProgress}`)=testBoard.columns[1].title
-        option(value=`${statuses.review}`)=testBoard.columns[2].title
-        option(value=`${statuses.testing}`)=testBoard.columns[3].title
-        option(value=`${statuses.monitoring}`)=testBoard.columns[4].title
-        option(value=`${statuses.done}`)=testBoard.columns[5].title
+        option(value=`${statuses.todo}` default)=boardData.columns[0].title
+        option(value=`${statuses.inProgress}`)=boardData.columns[1].title
+        option(value=`${statuses.review}`)=boardData.columns[2].title
+        option(value=`${statuses.testing}`)=boardData.columns[3].title
+        option(value=`${statuses.monitoring}`)=boardData.columns[4].title
+        option(value=`${statuses.done}`)=boardData.columns[5].title
       dl
         dt
           label(for="description") Description:

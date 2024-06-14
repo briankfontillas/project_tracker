@@ -1,10 +1,10 @@
 extends layout
 block main
-  form(id="start-form" action="/dashboard", method="post")
+  form(id="start-form" action="/dashboard/update", method="post")
     fieldset(id="start-set" class="fade-in")
       dl(id="title-start")
         dt 
-          label(for="project-title")
+          label(for="projectTitle")
         dd 
-          input(type="text" name="project-title" id="project-title" placeholder="Project title . . ." required)
+          input(type="text" name="projectTitle" id="project-title" placeholder="Project title . . .")
       input(type="submit" value="Let's get started!" class="start-btn")
