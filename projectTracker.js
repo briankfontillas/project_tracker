@@ -1,7 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
 const { body, validationResult } = require("express-validator");
-// const req.session.boardData = require("./lib/seed-data");
 const session = require("express-session");
 const store = require("connect-loki");
 const Board = require("./lib/board");
@@ -70,6 +69,7 @@ app.get("/new-board", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
+  if (!req.session.boardData) res.render("not-found");
   res.render("dashboard", { boardData: req.session.boardData });
 });
 
@@ -90,6 +90,7 @@ app.get("/ticket", (req, res) => {
 
 app.get("/ticket/:id", (req, res) => {
   let id = req.params.id;
+  req.session.boardData = Board.create(req.session.boardData);
   let ticket = req.session.boardData.findTicketById(+id)
 
   if (!ticket) {
@@ -125,6 +126,7 @@ app.post("/dashboard/update",
   },
   (req, res) => {
     let newTitle = req.body.projectTitle;
+    req.session.boardData = Board.create(req.session.boardData);
     req.session.boardData.updateTitle(newTitle);
     res.redirect("/dashboard");
 });
@@ -193,12 +195,14 @@ app.post("/ticket/:id/update",
 
 app.post("/progress", (req, res) => {
   let ticketTitle = req.body.ticketTitle;
+  req.session.boardData = Board.create(req.session.boardData);
   req.session.boardData.progressTicket(ticketTitle);
   res.redirect("/dashboard");
 });
 
 app.post("/regress", (req, res) => {
   let ticketTitle = req.body.ticketTitle;
+  req.session.boardData = Board.create(req.session.boardData);
   req.session.boardData.regressTicket(ticketTitle);
   res.redirect("/dashboard");
 });
