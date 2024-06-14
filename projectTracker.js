@@ -21,7 +21,7 @@ function validateTitle(title, whichTitle) {
     .isLength({ min: 1 })
     .withMessage(`${whichTitle} is required.`)
     .bail()
-    .isLength({ max: 25 })
+    .isLength({ max: 50 })
     .withMessage(`${whichTitle} is too long. Maximum length is 25 characters. `)
 }
 
@@ -160,7 +160,8 @@ app.post("/ticket/create",
   let description = req.body.description;
   let status = req.body.status;
   let priority = req.body.priority;
-
+  
+  req.session.boardData = Board.create(req.session.boardData);
   req.session.boardData.addTicket(new Ticket(title, description, priority, status), status);
   res.redirect("/dashboard");
 });
