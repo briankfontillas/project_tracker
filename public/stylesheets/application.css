@@ -376,3 +376,9 @@ img[alt="not-found"] {
 .error-page-message {
   font-size: 30px;
 }
+
+.no-tickets {
+  text-align: center;
+  position: relative;
+  top: 250px;
+}

@@ -39,3 +39,5 @@ block main
                   p(class="priority")=`P${ticket.priority}`
         else
           td
+    if totalTickets < 1
+      h4.no-tickets Your board is empty!

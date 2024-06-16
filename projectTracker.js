@@ -69,8 +69,13 @@ app.get("/new-board", (req, res) => {
 });
 
 app.get("/dashboard", (req, res) => {
+  req.session.boardData = Board.create(req.session.boardData);
+  let totaltickets = req.session.boardData.getTotalTickets();
   if (!req.session.boardData) res.render("not-found");
-  res.render("dashboard", { boardData: req.session.boardData });
+  res.render("dashboard", {
+    boardData: req.session.boardData,
+    totalTickets: totaltickets,
+  });
 });
 
 app.get("/dashboard/update", (req, res) => {
