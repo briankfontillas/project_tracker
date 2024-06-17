@@ -1,3 +1,5 @@
 docs
 node_modules
 session-store.db
+test.js
+./lib/seed-data.js
