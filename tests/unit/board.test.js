@@ -1,4 +1,5 @@
 const Board = require("../../lib/board");
+const Ticket = require("../../lib/ticket");
 
 describe("Initialized board", () => {
   test("existing board", () => {
@@ -32,5 +33,15 @@ describe("Board operations", () => {
 
     board.clear();
     expect(board.columns.length).toBe(6);
+  });
+
+  test("Deleting ticket from the board", () => {
+    let board = new Board();
+    let tickets = [{id: 1, status: "To-do"}, {id: 2, status: "To-do"}, {id: 3, status: "To-do"}];
+    board.columns[0].tickets = tickets;
+    board.removeTicketById(2);
+    
+    expect(board.columns[0].tickets.length).toBe(2);
+    expect(board.findTicketById(2)).toBe(undefined);
   });
 });

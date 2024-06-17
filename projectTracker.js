@@ -71,7 +71,7 @@ app.get("/new-board", (req, res) => {
 app.get("/dashboard", (req, res) => {
   req.session.boardData = Board.create(req.session.boardData);
   let totaltickets = req.session.boardData.getTotalTickets();
-  if (!req.session.boardData) res.render("not-found");
+  if (!req.session.boardData.title) res.render("not-found");
   res.render("dashboard", {
     boardData: req.session.boardData,
     totalTickets: totaltickets,
@@ -142,6 +142,7 @@ app.post("/dashboard/sort", (req, res) => {
 })
 
 app.post("/dashboard/clear", (req, res) => {
+  req.session.boardData = Board.create(req.session.boardData);
   req.session.boardData.clear();
   res.redirect("/dashboard");
 });
@@ -210,6 +211,12 @@ app.post("/regress", (req, res) => {
   let ticketTitle = req.body.ticketTitle;
   req.session.boardData = Board.create(req.session.boardData);
   req.session.boardData.regressTicket(ticketTitle);
+  res.redirect("/dashboard");
+});
+
+app.post("/ticket/:id/delete", (req, res) => {
+  req.session.boardData = Board.create(req.session.boardData);
+  req.session.boardData.removeTicketById(+(req.params.id));
   res.redirect("/dashboard");
 });
 

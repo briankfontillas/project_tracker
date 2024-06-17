@@ -29,3 +29,6 @@ block main
       input(type="submit" value="Update ticket" class="submit")
   a(href="/dashboard")
     button(class="cancel-btn") X
+  form(action=`/ticket/${ticket.id}/delete`, method="post")
+    button(class="ico fade-in" id="delete")
+      img(class="delete-icon" src="/images/trash.png" alt="Delete")
