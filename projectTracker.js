@@ -6,7 +6,6 @@ const store = require("connect-loki");
 const Board = require("./lib/board");
 const Column = require("./lib/column");
 const Ticket = require("./lib/ticket");
-const nextId = require("./lib/nextId");
 
 const app = express();
 const LokiStore = store(session);
