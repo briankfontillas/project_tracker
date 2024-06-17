@@ -130,7 +130,7 @@ button, select, input[type="submit"] {
   margin-left: 10px;
 }
 
-#title-update-btn:hover {
+.ico:hover {
   opacity: 0.5;
 }
 
@@ -381,4 +381,24 @@ img[alt="not-found"] {
   text-align: center;
   position: relative;
   top: 250px;
+}
+
+#delete {
+  border-style: none;
+  background-color: #f9f9f9;
+}
+
+.delete-icon {
+  width: 30px;
+  position: absolute;
+  bottom: 0;
+  right: 550px;
+}
+
+.delete-icon:hover {
+  opacity: .5;
+}
+
+.delete-icon.dash {
+  border: 1px solid black;
 }

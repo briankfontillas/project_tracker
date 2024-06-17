@@ -2,7 +2,7 @@ extends layout
 block main
   h1(id="project-title")=boardData.title
   a(href="/dashboard/update")
-    img(id="title-update-btn" src="/images/edit-icon-15.png" alt="edit title")
+    img(class="ico" id="title-update-btn" src="/images/edit-icon-15.png" alt="edit title")
   a(href="/new-ticket")
     button(class="project-btn" id="new-ticket") + Create ticket
   form(action="/dashboard/clear", method="post") 
@@ -36,6 +36,9 @@ block main
                     form(class="arrow" action="/progress", method="post") 
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
                       button(class="move right" disabled=ticket.status === boardData.columns[5].title)=">"
+                  form(action=`/ticket/${ticket.id}/delete` method="post")
+                    button(class="ico fade-in" )
+                      img(class="delete-icon dash" src="/images/trash.png" alt="Delete")
                   p(class="priority")=`P${ticket.priority}`
         else
           td
