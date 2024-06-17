@@ -37,10 +37,10 @@ block main
                       input(type="hidden" name="ticketTitle", value=`${ticket.title}`)
                       button(class="move right" disabled=ticket.status === boardData.columns[5].title)=">"
                   form(action=`/ticket/${ticket.id}/delete` method="post")
-                    button(class="ico fade-in" )
-                      img(class="delete-icon dash" src="/images/trash.png" alt="Delete")
+                    button(class="fade-in disp")
+                      img(src="/images/trash.png" alt="Delete" id="delete-in-dash")
                   p(class="priority")=`P${ticket.priority}`
         else
           td
-    if totalTickets < 1
-      h4.no-tickets Your board is empty!
+  if totalTickets < 1
+    h4.no-tickets Your board is empty!

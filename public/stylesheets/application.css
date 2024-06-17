@@ -318,12 +318,12 @@ select[name="priority"] {
   background-color: rgba(207, 209, 209, .4);
   position: absolute;
   top: 86%;
-  right: 2px;
+  left: 2px;
   padding: 0;
   border-top: 1px solid #cecece;
-  border-left: 1px solid #cecece;
+  border-left: .5px solid #cecece;
   border-bottom: .5px solid #cecece;
-  border-right: .5px solid #cecece;
+  border-right: 1px solid #cecece;
   cursor: default;
   font-size: 9px;
 }
@@ -399,6 +399,23 @@ img[alt="not-found"] {
   opacity: .5;
 }
 
-.delete-icon.dash {
-  border: 1px solid black;
+#delete-in-dash {
+  width: 10px;
+  position: absolute;
+  top: 86%;
+  right: 3px;
+  padding: 0;
+}
+
+#delete-in-dash:hover {
+  opacity: .5;
+}
+
+.disp {
+  background: none;       /* Remove background */
+  border: none;           /* Remove border */
+  padding: 0;             /* Remove padding */
+  margin: 0;              /* Remove margin */
+  cursor: pointer;        /* Change cursor to pointer */
+  display: inline-block;
 }

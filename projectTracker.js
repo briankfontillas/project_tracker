@@ -142,6 +142,7 @@ app.post("/dashboard/sort", (req, res) => {
 })
 
 app.post("/dashboard/clear", (req, res) => {
+  req.session.boardData = Board.create(req.session.boardData);
   req.session.boardData.clear();
   res.redirect("/dashboard");
 });
