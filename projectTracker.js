@@ -174,6 +174,7 @@ app.post("/ticket/create",
 app.post("/ticket/:id/update",
   [validateTitle("title", "Ticket title")],
   (req, res, next) => {
+    req.session.boardData = Board.create(req.session.boardData);
     let ticket = req.session.boardData.findTicketById(+(req.params.id));
     let errors = validationResult(req);
     if (!errors.isEmpty()) {
