@@ -1,0 +1,14 @@
+{
+  "titles": {
+    "valid": "Playwright automation test",
+    "empty": "",
+    "overMax": "This is a very long string that is supposed to fail the input"
+  },
+  "ticket": {
+    "description": {
+      "empty": "",
+      "short": "Basic description test",
+      "newLines": "Basic test with \na new line aded!"
+    }
+  }
+}
